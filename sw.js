@@ -1,5 +1,5 @@
 // IGP - Service SSE : fonctionnement hors ligne (cache de l'app)
-const VERSION = "igp-sse-v5";
+const VERSION = "igp-sse-v6";
 const FILES = ["./", "index.html", "manifest.webmanifest", "icons/icon-192.png", "icons/icon-512.png", "icons/icon-maskable-512.png", "icons/apple-touch-icon.png", "icons/logo.jpg"];
 self.addEventListener("install", e => {
   e.waitUntil(caches.open(VERSION).then(c => c.addAll(FILES)).then(() => self.skipWaiting()));
