@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#14284b">
-<title>Inspection générale planifiée - Service SSE</title>
+<title>Inspection générale planifiée - Service Santé Sécurité Environnement</title>
 <meta name="robots" content="noindex, nofollow">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
@@ -45,7 +45,9 @@ header{position:sticky;top:0;z-index:20;background:#14284b;background:var(--bran
 .install p{margin:0;flex:1;min-width:0}
 .install button{border:0;background:#14284b;background:var(--brand);color:#fff;border-radius:9px;padding:8px 12px;font-weight:700;font-size:13px}
 .install .close{background:none;color:#5d6b80;color:var(--muted);padding:6px;font-size:18px;line-height:1}
-.ttl small{display:block;font-weight:400;opacity:.75;font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ttl .l2{display:block;font-size:14.5px;font-weight:700;margin-top:3px}
+.ttl .l3{display:block;font-size:13px;font-weight:500;opacity:.85;margin-top:1px}
+.ttl small{margin-top:5px;display:block;font-weight:400;opacity:.75;font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .score{min-width:64px;text-align:center;border-radius:10px;padding:4px 8px;background:rgba(255,255,255,.12);font-variant-numeric:tabular-nums}
 .score b{display:block;font-size:18px;line-height:1.1}
 .score span{font-size:10px;text-transform:uppercase;letter-spacing:.6px;opacity:.8}
@@ -169,7 +171,7 @@ input:focus,textarea:focus,button:focus-visible{outline:2px solid #2f6fd6;outlin
       <div class="brand"><button class="back" id="b-back" aria-label="Retour" hidden>&#8249;</button><span class="logo"><img src="icons/logo.jpg" alt="Safran"></span></div>
       <div class="score" title="Taux de conformité (NA exclus)"><b id="score">–</b><span>Conformité</span></div>
     </div>
-    <h1 class="ttl">Inspection générale planifiée - Service&nbsp;SSE<small id="subtitle"></small></h1>
+    <h1 class="ttl">Inspection générale planifiée<span class="l2">Service Santé Sécurité Environnement</span><span class="l3">Safran Aircraft Engine Services Casablanca</span><small id="subtitle"></small></h1>
     <div class="tabs" role="tablist" id="tabs"></div>
   </div>
   <div class="bar"><i id="prog"></i></div>
