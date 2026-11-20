@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#14284b">
-<title>IGP - Service SSE</title>
+<title>Inspection générale planifiée - Service SSE</title>
 <meta name="robots" content="noindex, nofollow">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
@@ -36,16 +36,16 @@ button,input,textarea{font:inherit;color:inherit}
 .wrap{padding-left:14px;padding-left:max(14px,env(safe-area-inset-left,0px));padding-right:14px;padding-right:max(14px,env(safe-area-inset-right,0px));max-width:760px;margin:0 auto}
 header{position:sticky;top:0;z-index:20;background:#14284b;background:var(--brand);color:#ffffff;color:var(--brand-ink);padding-top:0px;padding-top:env(safe-area-inset-top,0px);box-shadow:0 2px 8px rgba(0,0,0,.15)}
 .top{display:flex;align-items:center;justify-content:space-between;gap:10px;padding-block:10px 6px}
-.top h1{font-size:17px;margin:0;font-weight:700;letter-spacing:.2px;min-width:0}
+.ttl{font-size:18px;line-height:1.25;margin:0;padding-bottom:8px;font-weight:800;letter-spacing:.2px}
 .brand{display:flex;align-items:center;gap:10px;min-width:0}
 .brand .logo{flex:none;background:#fff;border-radius:8px;padding:5px 7px;display:flex}
-.brand .logo img{height:16px;width:auto;display:block}
+.brand .logo img{height:18px;width:auto;display:block}
 .install{display:flex;align-items:center;gap:10px;background:#ffffff;background:var(--surface);border:1px solid #dde3ec;border:1px solid var(--line);border-radius:12px;border-radius:var(--radius);padding:10px 12px;margin-top:10px;font-size:13px}
 .install img{width:36px;height:36px;border-radius:8px;flex:none}
 .install p{margin:0;flex:1;min-width:0}
 .install button{border:0;background:#14284b;background:var(--brand);color:#fff;border-radius:9px;padding:8px 12px;font-weight:700;font-size:13px}
 .install .close{background:none;color:#5d6b80;color:var(--muted);padding:6px;font-size:18px;line-height:1}
-.top small{display:block;font-weight:400;opacity:.75;font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ttl small{display:block;font-weight:400;opacity:.75;font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .score{min-width:64px;text-align:center;border-radius:10px;padding:4px 8px;background:rgba(255,255,255,.12);font-variant-numeric:tabular-nums}
 .score b{display:block;font-size:18px;line-height:1.1}
 .score span{font-size:10px;text-transform:uppercase;letter-spacing:.6px;opacity:.8}
@@ -70,6 +70,7 @@ header{position:sticky;top:0;z-index:20;background:#14284b;background:var(--bran
 .back{flex:none;border:0;background:rgba(255,255,255,.14);color:#fff;border-radius:9px;width:36px;height:36px;font-size:24px;line-height:34px;padding:0;margin-right:2px;cursor:pointer}
 body.v-home main,body.v-home .dock,body.v-home .tabs,body.v-home .bar,body.v-home .score{display:none!important}
 body.v-home{padding-bottom:20px}
+.ttl small:empty{display:none}
 main{padding-block:12px}
 .panel{background:#ffffff;background:var(--surface);border:1px solid #dde3ec;border:1px solid var(--line);border-radius:12px;border-radius:var(--radius);padding:12px;display:grid;gap:10px}
 .row2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
@@ -163,9 +164,10 @@ input:focus,textarea:focus,button:focus-visible{outline:2px solid #2f6fd6;outlin
 <header>
   <div class="wrap">
     <div class="top">
-      <div class="brand"><button class="back" id="b-back" aria-label="Retour" hidden>&#8249;</button><span class="logo"><img src="icons/logo.jpg" alt="Safran"></span><h1>IGP - Service SSE<small id="subtitle">Inspection générale planifiée</small></h1></div>
+      <div class="brand"><button class="back" id="b-back" aria-label="Retour" hidden>&#8249;</button><span class="logo"><img src="icons/logo.jpg" alt="Safran"></span></div>
       <div class="score" title="Taux de conformité (NA exclus)"><b id="score">–</b><span>Conformité</span></div>
     </div>
+    <h1 class="ttl">Inspection générale planifiée - Service&nbsp;SSE<small id="subtitle"></small></h1>
     <div class="tabs" role="tablist" id="tabs"></div>
   </div>
   <div class="bar"><i id="prog"></i></div>
@@ -1183,7 +1185,7 @@ if (navigator.storage && navigator.storage.persist) {
 var SERVICES = [
     { id: "sse", name: "SSE", ic: "SSE", desc: "IGP 1 à 4 · Cantine", app: true },
     { id: "production", name: "Production", ic: "PR", subs: [{ id: "gate-1", name: "Gate 1", ic: "G1" }, { id: "gate-2", name: "Gate 2", ic: "G2" }] },
-    { id: "supply-chain", name: "Supply chain", ic: "SC", subs: [{ id: "hub-logistique", name: "HUB Logistique", ic: "HL" }, { id: "reception-expedition", name: "Réception Expédition", ic: "RE" }, { id: "hub-outillage", name: "Hub outillage", ic: "HO" }, { id: "magasins-produits-chimiques", name: "Magasins de stockage des produits chimiques", ic: "MC" }] },
+    { id: "supply-chain", name: "Supply chain", ic: "SC", subs: [{ id: "hub-logistique", name: "HUB Logistique", ic: "HL" }, { id: "reception-expedition", name: "Réception Expédition", ic: "RE" }, { id: "hub-outillage", name: "HUB Outillage", ic: "HO" }, { id: "magasins-produits-chimiques", name: "Magasins de stockage des produits chimiques", ic: "MC" }] },
     { id: "maintenance", name: "Maintenance", ic: "MA" },
     { id: "learning-factory", name: "Learning factory", ic: "LF" }
 ];
@@ -1227,7 +1229,7 @@ function route() {
     }
     document.body.classList.add("v-home");
     $("#home").hidden = false;
-    $("#subtitle").textContent = trail.length ? trail.map(function (n) { return n.name; }).join(" › ") : "Inspection générale planifiée";
+    $("#subtitle").textContent = trail.length ? trail.map(function (n) { return n.name; }).join(" › ") : "";
     var html;
     if (!node)
         html = "<h2>Choisissez le service</h2>" + SERVICES.map(function (n) { return svcLine(n, "#" + n.id); }).join("");
