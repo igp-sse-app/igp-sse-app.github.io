@@ -228,8 +228,7 @@ input:focus,textarea:focus,button:focus-visible{outline:2px solid #2f6fd6;outlin
   <div class="card">
     <h3>Fichier prêt</h3>
     <p id="ready-name"></p>
-    <button class="btn primary" id="ready-share">Partager / Enregistrer</button>
-    <button class="btn ghost" id="ready-dl">Télécharger</button>
+    <button class="btn primary" id="ready-dl">Télécharger</button>
     <button class="btn ghost" id="ready-no">Fermer</button>
   </div>
 </div>
@@ -810,7 +809,7 @@ function makeStyler(sdoc) {
 var est = function (txt, w) { return txt ? String(txt).split("\n").reduce(function (a, l) { return a + Math.max(1, Math.ceil(l.length / w)); }, 0) : 0; };
 function exportXlsx(sel) {
     return __awaiter(this, void 0, void 0, function () {
-        var bin, zip, P, S, sdoc, _a, _b, sty, ct, mediaN, _loop_2, _i, sel_1, si, w, keepFiles, allFiles, rx, txt, m, drop, wbx, _c, _d, rels, _e, _f, relByTarget, _g, _h, r, _j, drop_1, f, rel, rid, _k, _l, s, bv, app, a, names, _m, sel_2, si, pth, x, blob, tag, fname, f2, canSh;
+        var bin, zip, P, S, sdoc, _a, _b, sty, ct, mediaN, _loop_2, _i, sel_1, si, w, keepFiles, allFiles, rx, txt, m, drop, wbx, _c, _d, rels, _e, _f, relByTarget, _g, _h, r, _j, drop_1, f, rel, rid, _k, _l, s, bv, app, a, names, _m, sel_2, si, pth, x, blob, tag, fname, f2;
         return __generator(this, function (_o) {
             switch (_o.label) {
                 case 0:
@@ -1135,12 +1134,6 @@ function exportXlsx(sel) {
                     catch (e) { }
                     lastFile = { blob: blob, fname: fname, file: f2 };
                     $("#ready-name").textContent = fname;
-                    canSh = false;
-                    try {
-                        canSh = !!(lastFile.file && navigator.canShare && navigator.canShare({ files: [lastFile.file] }));
-                    }
-                    catch (e) { }
-                    $("#ready-share").hidden = !canSh;
                     $("#ready").hidden = false;
                     return [2 /*return*/];
             }
@@ -1166,23 +1159,6 @@ function downloadFile() { if (window.navigator && navigator.msSaveOrOpenBlob) {
     return;
 } var a = document.createElement("a"); a.href = URL.createObjectURL(lastFile.blob); a.download = lastFile.fname; document.body.appendChild(a); a.click(); setTimeout(function () { URL.revokeObjectURL(a.href); a.remove(); }, 4000); toast("Fichier " + lastFile.fname + " téléchargé"); }
 $("#ready-dl").onclick = function () { downloadFile(); $("#ready").hidden = true; };
-$("#ready-share").onclick = function () { return __awaiter(void 0, void 0, void 0, function () { var e_2; return __generator(this, function (_a) {
-    switch (_a.label) {
-        case 0:
-            _a.trys.push([0, 2, , 3]);
-            return [4 /*yield*/, navigator.share({ files: [lastFile.file], title: lastFile.fname })];
-        case 1:
-            _a.sent();
-            $("#ready").hidden = true;
-            return [3 /*break*/, 3];
-        case 2:
-            e_2 = _a.sent();
-            if (e_2.name !== "AbortError")
-                downloadFile();
-            return [3 /*break*/, 3];
-        case 3: return [2 /*return*/];
-    }
-}); }); };
 $("#ready-no").onclick = function () { $("#ready").hidden = true; };
 /* ---------- app installable + hors ligne ---------- */
 var isStandalone = matchMedia("(display-mode: standalone)").matches || navigator.standalone === true;
